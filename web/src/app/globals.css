@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minimal mono (Linear/Vercel) — single accent on near-white / near-black */
+:root {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #0a0a0a;
+  --accent-fg: #ffffff;
+  --card: #fafafa;
+  --radius: 6px;
+}
+
+.dark {
+  --bg: #0a0a0a;
+  --fg: #fafafa;
+  --muted: #9ca3af;
+  --border: #1f2937;
+  --accent: #fafafa;
+  --accent-fg: #0a0a0a;
+  --card: #111111;
+}
+
+* { border-color: var(--border); }
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--fg); color: var(--bg); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* Terminal cursor */
+.cursor-blink::after {
+  content: "▋";
+  display: inline-block;
+  animation: blink 1s steps(2, start) infinite;
+  margin-left: 2px;
+  color: var(--fg);
+  opacity: 0.7;
+}
+@keyframes blink { to { visibility: hidden; } }
+
+/* Mono spacing for code blocks */
+.code-block {
+  font-family: var(--font-mono, ui-monospace), monospace;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: auto;
+}

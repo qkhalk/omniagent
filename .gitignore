@@ -1,0 +1,23 @@
+# Go
+backend/omniagent
+backend/omniagent.db
+backend/omniagent.db-*
+backend/.env
+
+# Next.js
+web/node_modules/
+web/.next/
+web/out/
+web/.env.local
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Build artifacts
+bin/
+dist/
+data/
+workspace/

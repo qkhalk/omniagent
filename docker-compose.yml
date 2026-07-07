@@ -1,0 +1,23 @@
+services:
+  omniagent:
+    build: .
+    image: omniagent:latest
+    container_name: omniagent
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    env_file:
+      - ./backend/.env
+    environment:
+      OMNI_HOST: 0.0.0.0
+      OMNI_PORT: 8787
+      OMNI_DB_PATH: /data/omniagent.db
+      OMNI_WORKSPACE: /srv/omniagent/workspace
+      OMNI_WEB_DIR: /srv/omniagent/web
+    volumes:
+      - ./data:/data
+      - ./workspace:/srv/omniagent/workspace
+      - ./backend/.env:/srv/omniagent/.env:ro
+    # Optional: install CLI agents in the container, e.g. by extending the
+    # Dockerfile with:
+    #   RUN apk add --no-cache nodejs npm && npm i -g @anthropic-ai/claude-code
